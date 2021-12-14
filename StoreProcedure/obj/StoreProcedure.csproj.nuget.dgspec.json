@@ -5,7 +5,7 @@
   },
   "projects": {
     "/home/irfan/project/StoreProcedure/StoreProcedure/StoreProcedure.csproj": {
-      "version": "1.0.1",
+      "version": "1.0.2",
       "restore": {
         "projectUniqueName": "/home/irfan/project/StoreProcedure/StoreProcedure/StoreProcedure.csproj",
         "projectName": "StoreProcedure",
@@ -43,11 +43,11 @@
           "dependencies": {
             "Microsoft.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[5.0.12, )"
+              "version": "[5.0.0, )"
             },
             "Microsoft.EntityFrameworkCore.Relational": {
               "target": "Package",
-              "version": "[5.0.12, )"
+              "version": "[5.0.0, )"
             },
             "Newtonsoft.Json": {
               "target": "Package",
@@ -55,7 +55,7 @@
             },
             "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[4.8.3, )"
+              "version": "[4.8.1, )"
             }
           },
           "imports": [
