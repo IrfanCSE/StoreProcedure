@@ -18,17 +18,17 @@ namespace StoreProcedure
 
         #region All Public Methods To Use
 
-        public static Output PostJson(string Store_Procedure_Name, Json Object_To_Json, Param Param, Output Output)
+        public static Output Execute(string Store_Procedure_Name, Json Object_To_Json, Param Param, Output Output)
         {
             return PostJson_Method(Store_Procedure_Name, Object_To_Json, Param, Output);
         }
 
-        public static List<T_Dto> GetDataTable<T_Dto>(string Store_Procedure_Name, Json Object_To_Json, Param Param)
+        public static List<T_Dto> Execute<T_Dto>(string Store_Procedure_Name, Json Object_To_Json, Param Param)
         {
             return GetDataTable_Method<T_Dto>(Store_Procedure_Name, Object_To_Json, Param);
         }
 
-        public static DataTable GetDataTable(string Store_Procedure_Name, Json Object_To_Json, Param Param)
+        public static DataTable Execute(string Store_Procedure_Name, Json Object_To_Json, Param Param)
         {
             return GetDataTable_Method(Store_Procedure_Name, Object_To_Json, Param);
         }
