@@ -3,12 +3,12 @@ namespace StoreProcedure
 {
     public class KeyValue
     {
-        public KeyValue(string key)
+        internal KeyValue(string key)
         {
             this.Key = key;
         }
 
-        public KeyValue(string key, object value)
+        internal KeyValue(string key, object value)
         {
             this.Key = key;
             this.Value = value;
