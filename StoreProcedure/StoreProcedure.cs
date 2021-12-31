@@ -12,48 +12,52 @@ namespace StoreProcedure
         private static T _contextW;
         static StoreProcedure()
         {
+            // TODO:: Check for self Context
             if (_contextW == null)
                 _contextW = (T)Activator.CreateInstance(typeof(T));
         }
-        public static List<KeyValue> PostJson(string StoredProcedure, List<KeyValue> JsonObject, List<KeyValue> Output)
+        public static Output PostJson(string Store_Procedure_Name, Json Object_To_Json, Output Output)
         {
-            SqlConnection conn = new SqlConnection();
-            SqlCommand cmd = new SqlCommand();
+            var connection = new SqlConnection();
+            var command = new SqlCommand();
 
-            conn.ConnectionString = _contextW.Database.GetDbConnection().ConnectionString;
-            // conn.ConnectionString = _contextW.Database.GetConnectionString();
-            cmd.Connection = conn;
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.CommandText = StoredProcedure;
+            connection.ConnectionString = _contextW.Database.GetDbConnection().ConnectionString;
 
-            JsonObject.ForEach(x =>
+            command.Connection = connection;
+            command.CommandType = CommandType.StoredProcedure;
+            command.CommandText = Store_Procedure_Name;
+
+            Object_To_Json.ForEach(x =>
             {
                 var json = JsonConvert.SerializeObject(x.Value);
                 var name = x.Key;
-                cmd.Parameters.AddWithValue(name, json);
+                command.Parameters.AddWithValue(name, json);
             });
 
             foreach (var o in Output)
             {
-                var typeName = o.Key.GetType().Name;
-                SqlDbType type = SqlDbType.VarChar;
+                SqlDbType type = default;
 
+                var typeName = o.Key.GetType().Name;
+
+                // TODO:: need to add more type check
                 if (typeName == "String") type = SqlDbType.VarChar;
                 else if (typeName == "Int32") type = SqlDbType.Int;
 
-                cmd.Parameters.Add(o.Key, type, 100);
-                cmd.Parameters[o.Key].Direction = ParameterDirection.Output;
+                command.Parameters.Add(o.Key, type, 100);
+                command.Parameters[o.Key].Direction = ParameterDirection.Output;
             }
 
-            conn.Open();
-            int i = cmd.ExecuteNonQuery();
+            connection.Open();
+
+            var i = command.ExecuteNonQuery();
 
             foreach (var o in Output)
             {
-                o.Value = cmd.Parameters[o.Key].Value;
+                o.Value = command.Parameters[o.Key].Value;
             }
 
-            conn.Close();
+            connection.Close();
 
             return Output;
         }
