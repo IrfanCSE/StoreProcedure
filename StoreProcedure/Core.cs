@@ -9,11 +9,14 @@ namespace StoreProcedure
 {
     public static class Core
     {
-        
+
         #region All Privet Methods
 
-        internal static Output PostJson_Method(string Store_Procedure_Name, Json Object_To_Json, Param Param, Output Output,DbContext _context)
+        internal static Output PostJson_Method(string Store_Procedure_Name, Json Object_To_Json, Param Param, Output Output, DbContext _context)
         {
+            if (string.IsNullOrWhiteSpace(Store_Procedure_Name))
+                throw new Exception("Invalid Store Procedure");
+
             var _connection = _context.Database.GetDbConnection().ConnectionString;
 
             using (var connection = new SqlConnection(_connection))
@@ -73,8 +76,11 @@ namespace StoreProcedure
             return Output;
         }
 
-        internal static List<T_Dto> GetDataTable_Method<T_Dto>(string Store_Procedure_Name, Json Object_To_Json, Param Param,DbContext _context)
+        internal static List<T_Dto> GetDataTable_Method<T_Dto>(string Store_Procedure_Name, Json Object_To_Json, Param Param, DbContext _context)
         {
+            if (string.IsNullOrWhiteSpace(Store_Procedure_Name))
+                throw new Exception("Invalid Store Procedure");
+
             var _connection = _context.Database.GetDbConnection().ConnectionString;
             var data = new DataTable();
 
@@ -112,8 +118,11 @@ namespace StoreProcedure
             return Convert.DataTable_To_Object<T_Dto>(data);
         }
 
-        internal static DataTable GetDataTable_Method(string Store_Procedure_Name, Json Object_To_Json, Param Param,DbContext _context)
+        internal static DataTable GetDataTable_Method(string Store_Procedure_Name, Json Object_To_Json, Param Param, DbContext _context)
         {
+            if (string.IsNullOrWhiteSpace(Store_Procedure_Name))
+                throw new Exception("Invalid Store Procedure");
+
             var _connection = _context.Database.GetDbConnection().ConnectionString;
             var data = new DataTable();
 

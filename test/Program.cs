@@ -80,7 +80,10 @@ namespace test
                 var obj2 = new { sms = "ul", sms2 = "fsfa" };
 
                 var data = new object[] { obj, obj2 };
-                var sp = "dbo.spPostDatatable";
+                // var sp = "dbo.spPostDatatable";
+                var sp = "";
+                // var sp = "dbo.StoredProcedureName";
+
                 var json = new Json();
                 json.Add("@Json", data);
                 // json.Add("@Json2", obj2);
@@ -88,7 +91,7 @@ namespace test
                 // output.Add("@Output");                
 
                 // var result = StoreProcedure<AppDbContext>.GetDataTable(sp, json, default);
-                var result = context.Execute<obj>(sp, json, default);
+                var result = context.Execute<obj>(sp, default, default);
 
                 // var r = result.Find(x => x.Key == "@Output").Value.ToString();
                 // var r2 = result2.Find(x => x.Key == "@Output").Value.ToString();
@@ -108,7 +111,8 @@ namespace test
                 var obj2 = new { sms = "ul", sms2 = "fsfa" };
 
                 var data = new object[] { obj, obj2 };
-                var sp = "dbo.spPostDatatable";
+                var sp = "dbo.StoredProcedureName";
+                // var sp = "dbo.spPostDatatable";
                 var json = new Json();
                 json.Add("@Json", data);
                 // json.Add("@Json2", obj2);
@@ -116,7 +120,7 @@ namespace test
                 // output.Add("@Output");                
 
                 // var result = StoreProcedure<AppDbContext>.GetDataTable(sp, json, default);
-                var result = StoreProcedure<AppDbContext>.Execute<obj>(sp, json, default);
+                var result = StoreProcedure<AppDbContext>.Execute<obj>(sp, default, default);
 
                 // var r = result.Find(x => x.Key == "@Output").Value.ToString();
                 // var r2 = result2.Find(x => x.Key == "@Output").Value.ToString();
