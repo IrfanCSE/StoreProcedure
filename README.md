@@ -15,6 +15,10 @@ dotnet add package StoredProcedure --version 5.0.0
 ## Usage
 Prepare Data Set as Stored Procedure Accept.
 ```csharp
+// Here we will use EF context, I wrote this way for simplicity. You should follow EF default DI rules
+var context = new Your_App_DbContext
+```
+```csharp
 // Tag with Json, If your sp accept json
 var obj = new Example { property="value" };
 var json = new Json();
