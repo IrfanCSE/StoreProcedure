@@ -35,6 +35,20 @@ param.Add("@Param2", value2);
 var output = new Output();
 param.Add("@Output", out);
 ```
+Instruction:
+
+```csharp
+// skip any arguments by using 'default' or 'null'
+context.Execute(sp_name,csharp_object_list_for_json,parameter_list,output_list);
+
+// This will return DataTable by default
+context.Execute(sp_name,csharp_object_list_for_json,parameter_list);
+
+// will return T_DTO
+context.Execute<T_DTO>(sp_name,csharp_object_list_for_json,parameter_list);
+
+```
+
 Example: 1.1
 
 SQL
