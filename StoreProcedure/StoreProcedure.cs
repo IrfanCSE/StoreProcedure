@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
-using System.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
-using Newtonsoft.Json;
 
 namespace StoreProcedure
 {
-    public static class StoreProcedure<T> where T : DbContext
+    internal static class StoreProcedure<T> where T : DbContext
     {
         private static T _context;
         static StoreProcedure()

@@ -7,10 +7,10 @@ namespace test
     {
         static void Main(string[] args)
         {
-            // Test_PostJson();
+            Test_PostJson();
             // Test_PostDatatable();
             // Test_PostJson_With_EF();
-            Test_PostDatatable_With_EF();
+            // Test_PostDatatable_With_EF();
         }
 
         #region Test_PostJson
@@ -58,7 +58,8 @@ namespace test
                 var output = new Output();
                 output.Add("@Output");
 
-                var result = StoreProcedure<AppDbContext>.Execute(sp, json, default, output);
+                var result = context.Execute(sp, json, default, output);
+                // var result = StoreProcedure<AppDbContext>.Execute(sp, json, default, output);
                 // var result = StoreProcedure<AppDbContext>.PostJson(sp, json, default, output);
                 // var result2 = StoreProcedure<AppDbContextcopy>.PostJson(sp, json, output);
 
@@ -81,16 +82,17 @@ namespace test
 
                 var data = new object[] { obj, obj2 };
                 // var sp = "dbo.spPostDatatable";
-                var sp = "";
-                // var sp = "dbo.StoredProcedureName";
+                // var sp = "";
+                var sp = "dbo.StoredProcedureName";
 
                 var json = new Json();
                 json.Add("@Json", data);
                 // json.Add("@Json2", obj2);
                 // var output = new Output();
-                // output.Add("@Output");                
+                // output.Add("@Output");   
+                // var s = StoreProcedureWithEF.;
 
-                // var result = StoreProcedure<AppDbContext>.GetDataTable(sp, json, default);
+                // var result = StoreProcedure<AppDbContext>.GetDataTable(sp, json, dinternalefault);
                 var result = context.Execute<obj>(sp, default, default);
 
                 // var r = result.Find(x => x.Key == "@Output").Value.ToString();
@@ -120,7 +122,8 @@ namespace test
                 // output.Add("@Output");                
 
                 // var result = StoreProcedure<AppDbContext>.GetDataTable(sp, json, default);
-                var result = StoreProcedure<AppDbContext>.Execute<obj>(sp, default, default);
+                // var result = StoreProcedure<AppDbContext>.Execute<obj>(sp, default, default);
+                var result = context.Execute<obj>(sp, default, default);
 
                 // var r = result.Find(x => x.Key == "@Output").Value.ToString();
                 // var r2 = result2.Find(x => x.Key == "@Output").Value.ToString();
