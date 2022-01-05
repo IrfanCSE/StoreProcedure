@@ -58,7 +58,8 @@ namespace test
                 var output = new Output();
                 output.Add("@Output");
 
-                var result = StoreProcedure<AppDbContext>.Execute(sp, json, default, output);
+                var result = context.Execute(sp, json, default, output);
+                // var result = StoreProcedure<AppDbContext>.Execute(sp, json, default, output);
                 // var result = StoreProcedure<AppDbContext>.PostJson(sp, json, default, output);
                 // var result2 = StoreProcedure<AppDbContextcopy>.PostJson(sp, json, output);
 
@@ -120,7 +121,7 @@ namespace test
                 // output.Add("@Output");                
 
                 // var result = StoreProcedure<AppDbContext>.GetDataTable(sp, json, default);
-                var result = StoreProcedure<AppDbContext>.Execute<obj>(sp, default, default);
+                var result = context.Execute<obj>(sp, default, default);
 
                 // var r = result.Find(x => x.Key == "@Output").Value.ToString();
                 // var r2 = result2.Find(x => x.Key == "@Output").Value.ToString();

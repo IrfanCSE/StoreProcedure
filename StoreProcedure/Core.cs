@@ -7,7 +7,7 @@ using Newtonsoft.Json;
 
 namespace StoreProcedure
 {
-    public static class Core
+    internal static class Core
     {
 
         #region All Privet Methods

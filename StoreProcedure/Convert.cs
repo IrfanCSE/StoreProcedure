@@ -17,7 +17,7 @@ namespace StoreProcedure
             }
             return data;
         }
-        internal static T GetItem<T>(DataRow dr)
+        private static T GetItem<T>(DataRow dr)
         {
             Type temp = typeof(T);
             T obj = Activator.CreateInstance<T>();
