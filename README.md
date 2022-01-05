@@ -2,14 +2,13 @@
 
 It's a Helper Tool to execute a Stored Procedure from .Net Application.
 
-NOTE: This library written under .net 5 framework.
-
 ## Installation
 
 Use the [nuget](https://www.nuget.org/packages/StoredProcedure/) package manager to install StoredProcedure.
 
 ```bash
 dotnet add package StoredProcedure --version 5.0.0
+dotnet add package StoredProcedure --version 3.1.0
 ```
 
 ## Usage
